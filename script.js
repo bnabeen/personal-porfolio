@@ -16,24 +16,42 @@ document.addEventListener("DOMContentLoaded", function () {
   
     // ------------------------------------
     // Contact Form Handling
-    // ------------------------------------
-    const contactForm = document.getElementById("contact-form");
-    if (contactForm) {
-      contactForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-  
-        const formData = {
-          name: document.getElementById("name")?.value,
-          email: document.getElementById("email")?.value,
-          message: document.getElementById("message")?.value,
-        };
-  
-        console.log("Form submitted:", formData);
-  
-        // Reset form fields
-        this.reset();
+// ------------------------------------
+const contactForm = document.getElementById("contact-form");
+
+if (contactForm) {
+  contactForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const formData = {
+      name: document.getElementById("name")?.value,
+      email: document.getElementById("email")?.value,
+      message: document.getElementById("message")?.value,
+    };
+
+    console.log("Form submitted:", formData);
+
+    // Send form data to FormSubmit (or other service)
+    try {
+      const response = await fetch("https://formsubmit.co/info.nabeenbudha@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
+
+      if (response.ok) {
+        alert("Thank you! Your message has been sent.");
+        contactForm.reset(); // Reset form fields
+      } else {
+        alert("Oops! Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Failed to send message. Check your internet connection.");
     }
+  });
+}
+
   
     // ------------------------------------
     // Scroll Reveal Animations

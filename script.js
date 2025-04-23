@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // ------------------------------------
-    // Smooth Scrolling
-    // ------------------------------------
+
+// Smooth Scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener("click", function (e) {
         e.preventDefault();
@@ -14,9 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   
-    // ------------------------------------
-    // Contact Form Handling
-// ------------------------------------
+// Contact Form Handling
 const contactForm = document.getElementById("contact-form");
 
 if (contactForm) {
@@ -53,9 +50,7 @@ if (contactForm) {
 }
 
   
-    // ------------------------------------
-    // Scroll Reveal Animations
-    // ------------------------------------
+    //Animation - Scroll Revealing
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -72,12 +67,8 @@ if (contactForm) {
     document.querySelectorAll(".review-card, .profile-container").forEach((el) => {
       observer.observe(el);
     });
-  
-    // ------------------------------------
+
     // Mobile Menu Toggle
-    // ------------------------------------
-    // Use the hamburger element inside your .menu-toggle container.
-    // (Ensure your HTML has removed the <input type="checkbox"> if it's not needed.)
     const hamburger = document.querySelector(".hamburger");
     const navLinks = document.querySelector(".nav-links");
   
@@ -99,9 +90,7 @@ if (contactForm) {
       console.error("Hamburger or nav-links element not found.");
     }
   
-    // ------------------------------------
     // Close Mobile Menu When Clicking Outside
-    // ------------------------------------
     document.addEventListener("click", (e) => {
       if (
         navLinks &&

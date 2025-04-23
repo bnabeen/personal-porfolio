@@ -22,6 +22,7 @@ body {
     line-height: 1.6;
     display: flex;
     flex-direction: column;
+    /* overflow: hidden; */
 }
 
 /* Navigation */
@@ -256,7 +257,7 @@ section {
 .reviews-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    gap: 1.5rem;
     margin-top: 2rem;
 }
 
@@ -418,6 +419,8 @@ footer {
     color: var(--text-color);
     font-family: var(--font-primary);
     font-size: clamp(0.875rem, 2vw, 1rem);
+    overflow: hidden;
+    
 }
 
 .form-group textarea {
@@ -499,6 +502,7 @@ button[type="submit"]:hover {
     .form-group input,
     .form-group textarea {
         padding: 0.6rem;
+        overflow: hidden;
     }
 }
 

@@ -26,10 +26,11 @@ export interface ProjectItem {
   date?: string;
   github?: string;
   demo?: string;
+  walkthrough?: string;
 }
 
 
-const venturesData: WorkItem[] = [
+export const venturesData: WorkItem[] = [
   {
     slug: "devata-tech",
     num: "V1",
@@ -60,6 +61,7 @@ export const projectsData: ProjectItem[] = [
     status: "University Proposal",
     tech: ["Next.js", "Node.js", "MongoDB", "Routing Algorithm"],
     github: "https://github.com/nabeenbudha/safairoute",
+    walkthrough: "#",
     date: "2024"
   },
   {
@@ -69,11 +71,12 @@ export const projectsData: ProjectItem[] = [
     status: "In Development",
     tech: ["Python", "FastAPI", "OpenAI API", "PostgreSQL"],
     github: "https://github.com/nabeenbudha/ai-content-pipeline",
+    walkthrough: "#",
     date: "2024"
   }
 ];
 
-const experimentsData: WorkItem[] = [
+export const experimentsData: WorkItem[] = [
   {
     slug: "100-days-public-speaking",
     num: "E1",

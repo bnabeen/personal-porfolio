@@ -1,4 +1,5 @@
 import { projectsData } from "@/lib/data";
+import { ArrowRight, Github, ExternalLink } from "lucide-react";
 
 export const metadata = {
   title: "Projects | Nabeen Budha",
@@ -9,54 +10,69 @@ export default function ProjectsPage() {
   return (
     <div className="page-container">
       <div className="wrap">
-        <h1 className="display-font" style={{ fontSize: "clamp(36px, 5vw, 56px)", marginBottom: "16px" }}>
-          Projects
-        </h1>
-        <p className="sub" style={{ fontSize: "20px", marginBottom: "48px" }}>
-          Systems and tools that I&apos;ve built.
-        </p>
+        <div style={{ paddingTop: "20px", paddingBottom: "20px", borderTop: "1px solid var(--line)" }}>
+          <h1 style={{ fontSize: "13px", fontWeight: 700, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "24px", margin: 0 }}>
+            Projects
+          </h1>
 
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          {projectsData.map((project) => (
-            <div
-              key={project.slug}
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "baseline",
-                gap: "16px",
-                padding: "16px 0",
-                borderBottom: "1px solid var(--line)",
-              }}
-            >
-              <div style={{ display: "flex", alignItems: "baseline", gap: "12px", minWidth: 0 }}>
-                {project.github ? (
-                  <a
-                    href={project.github.startsWith("http") ? project.github : `https://${project.github}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ fontSize: "16px", color: "var(--ink)", fontWeight: 500, textDecoration: "none" }}
-                  >
-                    {project.title}
-                  </a>
-                ) : (
-                  <span style={{ fontSize: "16px", color: "var(--ink)", fontWeight: 500 }}>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            {projectsData.map((project) => (
+              <div
+                key={project.slug}
+                className="group"
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  gap: "16px",
+                  padding: "16px 0",
+                  borderBottom: "1px solid var(--line)",
+                }}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: "12px", minWidth: 0 }}>
+                  <span style={{ fontSize: "15px", color: "var(--ink)", fontWeight: 600 }}>
                     {project.title}
                   </span>
-                )}
-                {project.status && (
-                  <span style={{ fontSize: "14px", color: "var(--muted)" }}>
-                    — {project.status}
-                  </span>
-                )}
+                </div>
+
+                <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                  {project.walkthrough && (
+                    <a
+                      href={project.walkthrough.startsWith("http") ? project.walkthrough : (project.walkthrough === "#" ? "#" : `https://${project.walkthrough}`)}
+                      target={project.walkthrough === "#" ? undefined : "_blank"}
+                      rel={project.walkthrough === "#" ? undefined : "noopener noreferrer"}
+                      className="icon-link"
+                      style={{ fontSize: "13px", fontWeight: 500, textDecoration: "none" }}
+                    >
+                      Walk through
+                    </a>
+                  )}
+                  {project.github && (
+                    <a
+                      href={project.github.startsWith("http") ? project.github : `https://${project.github}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="icon-link"
+                      aria-label="GitHub Repository"
+                    >
+                      <Github size={16} />
+                    </a>
+                  )}
+                  {project.demo && (
+                    <a
+                      href={project.demo.startsWith("http") ? project.demo : `https://${project.demo}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="icon-link"
+                      aria-label="Live Demo"
+                    >
+                      <ExternalLink size={16} />
+                    </a>
+                  )}
+                </div>
               </div>
-              {project.date && (
-                <span style={{ fontSize: "14px", color: "var(--muted)", whiteSpace: "nowrap" }}>
-                  {project.date}
-                </span>
-              )}
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>

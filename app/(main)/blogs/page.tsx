@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { getAllBlogs } from "@/lib/blogs";
+import { ArrowRight } from "lucide-react";
+import SubstackEmbed from "@/components/SubstackEmbed";
 
 export const metadata = {
   title: "Blogs | Nabeen Budha",
@@ -12,18 +14,17 @@ export default function BlogsPage() {
   return (
     <div className="page-container">
       <div className="wrap">
-        <h1 className="display-font" style={{ fontSize: "clamp(36px, 5vw, 56px)", marginBottom: "16px" }}>
-          Blogs
-        </h1>
-        <p className="sub" style={{ fontSize: "20px", marginBottom: "40px" }}>
-          Writings on digital growth, applied AI, and content creation.
-        </p>
+        <div style={{ paddingTop: "20px", paddingBottom: "20px", borderTop: "1px solid var(--line)" }}>
+          <h1 style={{ fontSize: "13px", fontWeight: 700, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "24px", margin: 0 }}>
+            Latest Writing
+          </h1>
 
         {/* Blog Post List (Minimalist text list) */}
         <div style={{ display: "flex", flexDirection: "column", marginBottom: "64px" }}>
           {blogs.map((post) => (
             <div
               key={post.slug}
+              className="group"
               style={{
                 padding: "16px 0",
                 borderBottom: "1px solid var(--line)",
@@ -34,21 +35,24 @@ export default function BlogsPage() {
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
-                  alignItems: "baseline",
+                  alignItems: "center",
                   gap: "16px",
                   textDecoration: "none",
                   width: "100%",
                 }}
               >
-                <span
-                  style={{
-                    fontSize: "16px",
-                    color: "var(--ink)",
-                    fontWeight: 500,
-                  }}
-                >
-                  {post.title}
-                </span>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                  <span
+                    style={{
+                      fontSize: "16px",
+                      color: "var(--ink)",
+                      fontWeight: 500,
+                    }}
+                  >
+                    {post.title}
+                  </span>
+                  <ArrowRight size={16} className="opacity-0 -translate-x-4 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-0" style={{ color: "var(--muted)" }} />
+                </div>
                 {post.date && (
                   <span
                     style={{
@@ -69,40 +73,27 @@ export default function BlogsPage() {
           )}
         </div>
 
-        {/* Substack Newsletter Embed */}
-        <div style={{ 
-          marginBottom: "64px", 
-          padding: "48px 40px", 
-          border: "1px solid var(--line)", 
-          borderRadius: "4px",
-          background: "transparent",
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
-          gap: "48px",
-          alignItems: "center"
-        }}>
-          <div>
-            <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "16px" }}>
-              <div style={{ width: "8px", height: "8px", background: "var(--ink)" }}></div>
-              <span style={{ fontSize: "12px", fontWeight: 700, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
-                NEWSLETTER
-              </span>
+        </div>
+
+        {/* Newsletter Section */}
+        <div style={{ padding: "20px 0", borderTop: "1px solid var(--line)" }}>
+          <div className="box-padding newsletter-grid" style={{
+            border: "1px solid var(--line)",
+            borderRadius: "12px",
+            background: "transparent"
+          }}>
+            <div>
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "16px" }}>
+                <div style={{ width: "8px", height: "8px", background: "var(--ink)" }}></div>
+                <h2 style={{ fontSize: "13px", fontWeight: 700, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.05em", margin: 0 }}>
+                  Newsletter
+                </h2>
+              </div>
+              <p style={{ color: "var(--muted)", fontSize: "16px", lineHeight: 1.6, maxWidth: "40ch", margin: 0 }}>
+                Occasional letters on digital growth, applied AI, and the systems I build. No spam, unsubscribe any time.
+              </p>
             </div>
-            <h2 className="display-font" style={{ fontSize: "28px", marginBottom: "16px" }}>Digital Growth & AI</h2>
-            <p style={{ color: "var(--muted)", fontSize: "16px", lineHeight: 1.6, maxWidth: "40ch", margin: 0 }}>
-              Occasional letters on digital growth, applied AI, and the systems I build. No spam, unsubscribe any time.
-            </p>
-          </div>
-          <div style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
-            <iframe 
-              src="https://bnabeen.substack.com/embed" 
-              width="100%" 
-              height="150" 
-              style={{ border: "none", background: "transparent", maxWidth: "480px" }} 
-              frameBorder="0" 
-              scrolling="no"
-              title="Substack Newsletter"
-            ></iframe>
+            <SubstackEmbed />
           </div>
         </div>
       </div>

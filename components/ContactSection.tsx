@@ -1,3 +1,5 @@
+import { ArrowRight } from "lucide-react";
+
 interface ContactLink {
   label: string;
   value: string;
@@ -22,8 +24,8 @@ const contactLinks: ContactLink[] = [
   },
   {
     label: "Instagram",
-    value: "@nabeen.me",
-    href: "https://instagram.com/nabeen.me",
+    value: "@bnabeen.me",
+    href: "https://instagram.com/bnabeen.me",
   },
   {
     label: "Substack",
@@ -34,69 +36,45 @@ const contactLinks: ContactLink[] = [
 
 export default function ContactSection() {
   return (
-    <div className="page-container">
-      <div className="wrap">
-        <h1 className="display-font" style={{ fontSize: "clamp(36px, 5vw, 56px)", marginBottom: "16px" }}>
-          Contact
-        </h1>
-        <p className="sub" style={{ fontSize: "20px", marginBottom: "48px" }}>
-          Get in touch for collaborations, questions, or just to say hi.
-        </p>
+    <div id="contact" style={{ padding: "20px 0", borderTop: "1px solid var(--line)" }}>
+      <h2 style={{ fontSize: "13px", fontWeight: 700, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "24px" }}>Want to get in touch?</h2>
 
-        {/* Primary Direct Email */}
-        <div style={{ marginBottom: "56px" }}>
-          <p style={{ color: "var(--muted)", fontSize: "14px", textTransform: "uppercase", letterSpacing: "0.08em", fontWeight: 600, marginBottom: "8px" }}>
-            Direct Email
-          </p>
-          <a
-            href="mailto:info.nabeenbudha@gmail.com"
+      {/* Channels List (Minimalist text list) */}
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        {contactLinks.map((item) => (
+          <div
+            key={item.label}
+            className="group"
             style={{
-              fontSize: "clamp(22px, 4vw, 36px)",
-              fontWeight: 600,
-              color: "var(--ink)",
-              textDecoration: "none",
-              display: "inline-block",
-              borderBottom: "2px solid var(--ink)",
-              paddingBottom: "4px",
+              padding: "16px 0",
+              borderBottom: "1px solid var(--line)",
             }}
           >
-            info.nabeenbudha@gmail.com
-          </a>
-        </div>
-
-        {/* Channels List (Minimalist text list) */}
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          {contactLinks.map((item) => (
-            <div
-              key={item.label}
+            <a
+              href={item.href}
+              target={item.href.startsWith("http") ? "_blank" : undefined}
+              rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
               style={{
-                padding: "16px 0",
-                borderBottom: "1px solid var(--line)",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                gap: "16px",
+                textDecoration: "none",
+                width: "100%",
               }}
             >
-              <a
-                href={item.href}
-                target={item.href.startsWith("http") ? "_blank" : undefined}
-                rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "baseline",
-                  gap: "16px",
-                  textDecoration: "none",
-                  width: "100%",
-                }}
-              >
-                <span style={{ fontSize: "16px", color: "var(--ink)", fontWeight: 500 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <span style={{ fontSize: "15px", color: "var(--ink)", fontWeight: 600, transition: "color 0.2s" }}>
                   {item.label}
                 </span>
-                <span style={{ fontSize: "14px", color: "var(--muted)", whiteSpace: "nowrap" }}>
-                  {item.value} ↗
-                </span>
-              </a>
-            </div>
-          ))}
-        </div>
+                <ArrowRight size={14} className="opacity-0 -translate-x-4 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-0" style={{ color: "var(--muted)" }} />
+              </div>
+              <span style={{ fontSize: "13px", color: "var(--muted)", whiteSpace: "nowrap" }}>
+                {item.value}
+              </span>
+            </a>
+          </div>
+        ))}
       </div>
     </div>
   );

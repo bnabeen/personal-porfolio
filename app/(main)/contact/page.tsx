@@ -6,5 +6,9 @@ export const metadata = {
 };
 
 export default function ContactPage() {
-  return <ContactSection />;
+  return (
+    <div className="wrap page-container" style={{ paddingBottom: "128px" }}>
+      <ContactSection />
+    </div>
+  );
 }

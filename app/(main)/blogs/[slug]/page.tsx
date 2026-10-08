@@ -1,10 +1,11 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import { getAllBlogs, getBlogBySlug } from "@/lib/blogs";
+import SubstackEmbed from "@/components/SubstackEmbed";
 
 export async function generateStaticParams() {
   const blogs = getAllBlogs();
@@ -50,63 +51,69 @@ function formatPublishDate(dateStr?: string) {
 }
 
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = getBlogBySlug(params.slug);
+  const allBlogs = getAllBlogs();
+  const currentIndex = allBlogs.findIndex(b => b.slug === params.slug);
+  const post = currentIndex !== -1 ? allBlogs[currentIndex] : null;
 
   if (!post) {
     notFound();
   }
+  
+  const prevPost = currentIndex < allBlogs.length - 1 ? allBlogs[currentIndex + 1] : null;
+  const nextPost = currentIndex > 0 ? allBlogs[currentIndex - 1] : null;
 
   return (
-    <div className="w-full bg-white text-neutral-900 min-h-screen py-10 sm:py-16">
+    <div className="w-full bg-bg text-ink min-h-screen py-10 sm:py-16">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Navigation Back Link */}
         <Link
           href="/blogs"
-          className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-neutral-900 transition-colors mb-8 no-underline"
+          className="inline-flex items-center gap-2 text-sm text-muted hover:text-ink transition-colors mb-8 no-underline"
         >
           <ArrowLeft size={16} /> Back to Blogs
         </Link>
 
         {/* Clean Header & Title Block */}
         <header className="mb-10 sm:mb-12">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-neutral-900 leading-[1.15] mb-4">
+          <h1 className="font-bold tracking-tight text-ink leading-[1.15] mb-4" style={{ fontSize: "24px" }}>
             {post.title}
           </h1>
           {post.date && (
-            <p className="text-neutral-500 text-sm sm:text-base font-normal m-0">
-              {formatPublishDate(post.date)}
+            <p className="text-muted text-sm sm:text-base font-normal m-0">
+              {formatPublishDate(post.date)} {post.category && `· ${post.category}`}
             </p>
           )}
         </header>
 
         {/* Focused Single-Column Document Layout */}
-        <article className="prose prose-neutral max-w-none space-y-6 text-neutral-900 leading-relaxed text-base sm:text-lg">
+        <article className="prose dark:prose-invert max-w-none space-y-6 text-ink leading-relaxed text-base sm:text-lg">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeRaw]}
             components={{
               p: ({ node, ...props }) => (
-                <p className="leading-relaxed text-base sm:text-lg text-neutral-800 m-0" {...props} />
+                <p className="leading-relaxed text-base sm:text-lg text-ink m-0" {...props} />
               ),
               a: ({ node, href, children, ...props }) => {
                 const isExternal = href?.startsWith("http");
                 return (
                   <a
                     href={href}
-                    className="font-normal text-neutral-900 underline underline-offset-4 decoration-neutral-300 hover:decoration-neutral-900 transition-colors inline-flex items-baseline gap-0.5"
+                    className="font-normal text-ink underline underline-offset-4 decoration-line hover:decoration-ink transition-colors inline-flex items-baseline gap-0.5"
                     target={isExternal ? "_blank" : undefined}
                     rel={isExternal ? "noopener noreferrer" : undefined}
                     {...props}
                   >
                     <span>{children}</span>
-                    {isExternal && <span className="text-xs text-neutral-400 select-none">↗</span>}
+                    {isExternal && <span className="text-xs text-muted select-none">↗</span>}
                   </a>
                 );
               },
               img: ({ node, ...props }) => (
                 <img
                   {...props}
-                  className="w-full rounded-xl my-8 object-cover max-w-full h-auto"
+                  className="w-full my-8 object-cover max-w-full h-auto"
+                  style={{ borderRadius: "4px", border: "1px solid var(--line)" }}
                   alt={props.alt || "Post image"}
                 />
               ),
@@ -116,20 +123,54 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           </ReactMarkdown>
         </article>
 
+        {/* Newsletter Section */}
+        <div style={{ marginTop: "48px", padding: "20px 0", borderTop: "1px solid var(--line)" }}>
+          <div className="box-padding newsletter-grid" style={{
+            border: "1px solid var(--line)",
+            borderRadius: "12px",
+            background: "transparent"
+          }}>
+            <div>
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "16px" }}>
+                <div style={{ width: "8px", height: "8px", background: "var(--ink)" }}></div>
+                <h2 style={{ fontSize: "13px", fontWeight: 700, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.05em", margin: 0 }}>
+                  Newsletter
+                </h2>
+              </div>
+              <p style={{ color: "var(--muted)", fontSize: "16px", lineHeight: 1.6, maxWidth: "40ch", margin: 0 }}>
+                Occasional letters on digital growth, applied AI, and the systems I build. No spam, unsubscribe any time.
+              </p>
+            </div>
+            <SubstackEmbed />
+          </div>
+        </div>
+
         {/* Clean Footer Navigation */}
-        <footer className="pt-12 mt-16 border-t border-neutral-200 flex justify-between items-center text-sm">
-          <Link
-            href="/blogs"
-            className="inline-flex items-center gap-1.5 text-neutral-600 hover:text-neutral-900 transition-colors no-underline font-medium"
-          >
-            <ArrowLeft size={16} /> All Blogs
-          </Link>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-1.5 text-neutral-600 hover:text-neutral-900 transition-colors no-underline font-medium"
-          >
-            Get in touch →
-          </Link>
+        <footer className="pt-8 flex justify-between items-center text-sm">
+          {prevPost ? (
+            <Link
+              href={`/blogs/${prevPost.slug}`}
+              className="inline-flex items-center gap-1.5 text-muted hover:text-ink transition-colors no-underline font-medium"
+            >
+              <ArrowLeft size={16} /> Previous
+            </Link>
+          ) : (
+            <Link
+              href="/blogs"
+              className="inline-flex items-center gap-1.5 text-muted hover:text-ink transition-colors no-underline font-medium"
+            >
+              <ArrowLeft size={16} /> All Blogs
+            </Link>
+          )}
+          
+          {nextPost && (
+            <Link
+              href={`/blogs/${nextPost.slug}`}
+              className="inline-flex items-center gap-1.5 text-muted hover:text-ink transition-colors no-underline font-medium"
+            >
+              Next <ArrowRight size={16} />
+            </Link>
+          )}
         </footer>
       </div>
     </div>

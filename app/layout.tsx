@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: "Nabeen Budha Portfolio",
   },
+  icons: {
+    icon: "/icon.svg",
+  }
 };
 
 export const viewport = {
@@ -26,6 +29,8 @@ import { Suspense } from "react";
 import ClickEffect from "@/components/ClickEffect";
 import NavigationProgress from "@/components/NavigationProgress";
 import { Toaster } from "react-hot-toast";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import NewsletterPopup from "@/components/NewsletterPopup";
 
 export default function RootLayout({
   children,
@@ -34,30 +39,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        {/* Inline script: runs before paint to set data-theme, preventing flash */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var saved = localStorage.getItem('theme');
-                  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                  var theme = saved || (prefersDark ? 'dark' : 'light');
-                  document.documentElement.setAttribute('data-theme', theme);
-                } catch(e) {}
-              })();
-            `,
-          }}
-        />
-      </head>
       <body>
-        <Toaster position="bottom-right" toastOptions={{ style: { background: 'var(--bg)', color: 'var(--ink)', border: '1px solid var(--line)' } }} />
-        <Suspense fallback={null}>
-          <NavigationProgress />
-        </Suspense>
-        <ClickEffect />
-        {children}
+        <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem>
+          <Toaster position="bottom-right" toastOptions={{ style: { background: 'var(--bg)', color: 'var(--ink)', border: '1px solid var(--line)' } }} />
+          <Suspense fallback={null}>
+            <NavigationProgress />
+          </Suspense>
+          <ClickEffect />
+          <NewsletterPopup />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

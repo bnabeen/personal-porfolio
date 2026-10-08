@@ -5,33 +5,26 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Sun, Moon, Menu, X, Github, Linkedin, Instagram } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Logo from "@/components/Logo";
+import { useTheme } from "next-themes";
+import { AnimatedThemeToggler } from "@/registry/magicui/animated-theme-toggler";
 
 export default function Header() {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const { resolvedTheme, setTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
+  // Next-themes requires mounting to avoid hydration mismatch
+  const [mounted, setMounted] = useState(false);
   useEffect(() => {
-    const active = (document.documentElement.getAttribute("data-theme") as "light" | "dark") ||
-      (localStorage.getItem("theme") as "light" | "dark") || 
-      (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-    setTheme(active);
-    document.documentElement.setAttribute("data-theme", active);
+    setMounted(true);
   }, []);
 
-  const toggleTheme = () => {
-    const current = (document.documentElement.getAttribute("data-theme") as "light" | "dark") || theme;
-    const nextTheme = current === "dark" ? "light" : "dark";
-    setTheme(nextTheme);
-    localStorage.setItem("theme", nextTheme);
-    document.documentElement.setAttribute("data-theme", nextTheme);
-  };
-
   const navLinks = [
-    { label: "Work", href: "/work" },
-    { label: "Projects", href: "/projects" },
-    { label: "Blogs", href: "/blogs" },
-    { label: "Contact", href: "/contact" },
+    { label: "Work", href: "/#work" },
+    { label: "Projects", href: "/#projects" },
+    { label: "Blogs", href: "/#blogs" },
+    { label: "Contact", href: "/#contact" },
   ];
 
   return (
@@ -51,20 +44,7 @@ export default function Header() {
         }} aria-label="Main Navigation">
           
           {/* Logo / Wordmark */}
-          <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
-            <span
-              className="display-font"
-              style={{
-                fontSize: "24px",
-                fontWeight: 800,
-                letterSpacing: "-0.04em",
-                color: "var(--ink)",
-                lineHeight: 1,
-              }}
-            >
-              bnabeen
-            </span>
-          </Link>
+          <Logo />
 
           {/* Desktop Navigation */}
           <div style={{ display: "flex", alignItems: "center", gap: "32px" }} className="desktop-only">
@@ -77,11 +57,12 @@ export default function Header() {
               padding: 0
             }}>
               {navLinks.map((link) => {
-                const isActive = pathname === link.href || (link.href !== "/" && pathname?.startsWith(link.href));
+                const href = link.label === "Blogs" ? "/#blogs-desktop" : link.href;
+                const isActive = pathname === href || (href !== "/" && pathname?.startsWith(href));
                 return (
-                  <li key={link.href}>
+                  <li key={link.label}>
                     <Link
-                      href={link.href}
+                      href={href}
                       className={`header-nav-link ${isActive ? "active" : ""}`}
                       style={{
                         color: isActive ? "var(--ink)" : "var(--muted)",
@@ -94,52 +75,25 @@ export default function Header() {
               })}
             </ul>
 
-            {/* Social Icons */}
-            <div style={{ display: "flex", alignItems: "center", gap: "16px", borderLeft: "1px solid var(--line)", paddingLeft: "32px" }}>
-              <a href="https://github.com/bnabeen" target="_blank" rel="noopener noreferrer" style={{ color: "var(--muted)" }}><Github size={18} /></a>
-              <a href="https://linkedin.com/in/bnabeen" target="_blank" rel="noopener noreferrer" style={{ color: "var(--muted)" }}><Linkedin size={18} /></a>
-              <a href="https://instagram.com/nabeen.me" target="_blank" rel="noopener noreferrer" style={{ color: "var(--muted)" }}><Instagram size={18} /></a>
-              
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.15 }}
-                onClick={toggleTheme}
-                aria-label="Toggle color theme"
-                style={{
-                  background: "transparent",
-                  border: "none",
-                  color: "var(--muted)",
-                  cursor: "pointer",
-                  display: "grid",
-                  placeItems: "center",
-                  padding: "4px"
-                }}
-              >
-                {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
-              </motion.button>
+            {/* Theme Toggle */}
+            <div style={{ display: "flex", alignItems: "center", borderLeft: "1px solid var(--line)", paddingLeft: "24px" }}>
+              {mounted && (
+                <AnimatedThemeToggler
+                  theme={resolvedTheme}
+                  onThemeChange={setTheme}
+                />
+              )}
             </div>
           </div>
 
           {/* Mobile Menu Toggle & Theme */}
           <div className="mobile-only" style={{ alignItems: "center", gap: "16px" }}>
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.15 }}
-              onClick={toggleTheme}
-              aria-label="Toggle color theme"
-              style={{
-                background: "transparent",
-                border: "none",
-                color: "var(--muted)",
-                cursor: "pointer",
-                display: "grid",
-                placeItems: "center"
-              }}
-            >
-              {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
-            </motion.button>
+            {mounted && (
+              <AnimatedThemeToggler
+                theme={resolvedTheme}
+                onThemeChange={setTheme}
+              />
+            )}
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -218,11 +172,7 @@ export default function Header() {
                 </Link>
               );
             })}
-            <div style={{ display: "flex", alignItems: "center", gap: "20px", marginTop: "16px", paddingTop: "16px", borderTop: "1px solid var(--line)" }}>
-              <a href="https://github.com/bnabeen" target="_blank" rel="noopener noreferrer" style={{ color: "var(--ink)" }}><Github size={20} /></a>
-              <a href="https://linkedin.com/in/bnabeen" target="_blank" rel="noopener noreferrer" style={{ color: "var(--ink)" }}><Linkedin size={20} /></a>
-              <a href="https://instagram.com/nabeen.me" target="_blank" rel="noopener noreferrer" style={{ color: "var(--ink)" }}><Instagram size={20} /></a>
-            </div>
+            {/* Removed mobile social icons */}
           </motion.div>
         )}
       </AnimatePresence>

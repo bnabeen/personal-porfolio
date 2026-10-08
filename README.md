@@ -1,45 +1,59 @@
-# Personal Portfolio
+# Nabeen Budha - Personal Portfolio & Blog
 
-## Project Overview
+A minimalist, high-performance personal portfolio and blog built with Next.js (App Router). Designed to showcase work, experiments, digital growth strategies, and writings in a clean, distraction-free environment.
 
-This is the personal portfolio of Nabeen Budha, a frontend and Python developer. The portfolio showcases Nabeen's skills, projects, and experience in a clean, modern, and intuitive design. The portfolio is structured to provide visitors with a comprehensive overview of Nabeen's technical expertise and professional journey.
+## 🚀 Features
 
-## Features
+- **Modern Tech Stack**: Built with Next.js 15, React 19, and pure vanilla CSS for maximum control and performance.
+- **Minimalist Aesthetic**: Highly curated typography (Inter/Geist), fluid spacing, and subtle micro-animations that feel premium and modern.
+- **Dark Mode Support**: Seamless light/dark mode toggling with `next-themes` and `magicui` animated theme toggler.
+- **Dynamic Content**: Data-driven structure for Projects, Ventures, and Work Experience.
+- **Integrated Blog**: Built-in markdown-based blogging system with dynamic routing and Next/Previous navigation.
+- **Newsletter Integration**: Native-looking Substack embed gracefully blended into the UI.
+- **Responsive Layout**: Mobile-first design that scales beautifully to desktop with a clean sidebar architecture.
 
-- **Responsive Design**: The portfolio is designed to be fully responsive, ensuring a seamless experience across various devices and screen sizes.
-- **Navigation Bar**: A dynamic navigation bar with links to the Home, Work, Projects, and Contact sections.
-- **Profile Section**: A section dedicated to Nabeen's profile, including a profile picture, a brief bio, and a link to view the resume.
-- **Tech Stack**: An overview of the technologies and frameworks that Nabeen is proficient in, including Python, HTML5, CSS3, JavaScript, React, and Node.js.
-- **Reviews Section**: Testimonials from colleagues and clients highlighting the quality of Nabeen's work.
-- **Social Links**: Links to Nabeen's GitHub, LinkedIn, Instagram, and email for easy contact and networking.
+## 💻 Technologies Used
 
-## Technologies Used
+- **Framework**: [Next.js](https://nextjs.org/) (App Router)
+- **UI & Components**: React, [Lucide React](https://lucide.dev/) (Icons)
+- **Styling**: Vanilla CSS3 (`globals.css`) with custom CSS Variables
+- **Theming**: `next-themes`
 
-- **HTML5**: For the structure and content of the portfolio.
-- **CSS3**: For styling and layout.
-- **JavaScript**: For interactivity and dynamic content.
-- **Font Awesome**: For icons and visual enhancements.
+## 📂 Project Structure
 
-## Sections
+- `app/(main)/page.tsx` - Homepage featuring about me, top projects, works, and latest writings.
+- `app/(main)/blogs` - Blog listing and individual markdown-based blog rendering.
+- `app/(main)/projects` - Dedicated showcase for development projects and case studies.
+- `app/(main)/work` - Detailed chronological work experience and ventures.
+- `content/blogs/` - Markdown files for blog posts.
+- `lib/data.ts` - Centralized JSON-like data structure managing works and projects.
 
-### Home
-The homepage features a profile container with a picture of Nabeen Budha, a brief bio, and a link to the resume. It also includes a description of Nabeen's professional experience and focus areas.
+## 🛠️ Getting Started
 
-### Tech Stack
-This section highlights the various technologies and frameworks that Nabeen is skilled in. Each technology is represented by an icon and a title.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/bnabeen/personal-porfolio.git
+   cd personal-porfolio
+   ```
 
-### Reviews
-A collection of testimonials from people who have worked with Nabeen, emphasizing the quality and impact of Nabeen's work.
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-### Contact
-Links to Nabeen's social media profiles and email for easy communication.
+3. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
 
-## Contact
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-Feel free to reach out to Nabeen Budha through the following platforms:
-- **GitHub**: [github.com/nabeenbudha](https://github.com/nabeenbudha)
-- **LinkedIn**: [linkedin.com/in/nabeenbudha](https://linkedin.com/in/nabeenbudha)
-- **Instagram**: [instagram.com/nabeen.me](https://instagram.com/nabeen.me)
-- **Email**: [info.nabeenbudha@gmail.com](mailto:info.nabeenbudha@gmail.com)
+## 📬 Contact & Links
 
-&copy; 2025 Nabeen Budha. All rights reserved.
+- **GitHub**: [@bnabeen](https://github.com/bnabeen)
+- **LinkedIn**: [Nabeen Budha](https://linkedin.com/in/bnabeen)
+- **Instagram**: [@bnabeen.me](https://instagram.com/bnabeen.me)
+- **Substack**: [bnabeen.substack.com](https://bnabeen.substack.com)
+
+---
+&copy; 2026 Nabeen Budha. All rights reserved.

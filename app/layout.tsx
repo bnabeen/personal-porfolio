@@ -3,13 +3,13 @@ import "./globals.css";
 import "@uploadthing/react/styles.css";
 
 export const metadata: Metadata = {
-  title: "Nabeen Budha | AI, Marketing & Content Portfolio",
-  description: "I study how AI changes the way businesses earn attention and customers. Explore my work, experiments, and essays.",
+  title: "Nabeen Budha | AI, Content & Digital Growth",
+  description: "Nabeen Budha is a BCA student in Kathmandu helping local businesses grow with AI and content. Ex-editor at RUJU FactCheck, now building Devata Tech.",
   keywords: ["Nabeen Budha", "AI Marketing", "Content Systems", "Devata Tech", "Customer Acquisition", "Nepal Tech"],
   authors: [{ name: "Nabeen Budha" }],
   openGraph: {
-    title: "Nabeen Budha | AI, Marketing & Content",
-    description: "I study how AI changes the way businesses earn attention and customers.",
+    title: "Nabeen Budha | AI, Content & Digital Growth",
+    description: "Nabeen Budha is a BCA student in Kathmandu helping local businesses grow with AI and content. Ex-editor at RUJU FactCheck, now building Devata Tech.",
     type: "website",
     locale: "en_US",
     siteName: "Nabeen Budha Portfolio",

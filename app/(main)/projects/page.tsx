@@ -11,7 +11,7 @@ export default function ProjectsPage() {
     <div className="page-container">
       <div className="wrap">
         <div style={{ paddingTop: "20px", paddingBottom: "20px", borderTop: "1px solid var(--line)" }}>
-          <h1 style={{ fontSize: "13px", fontWeight: 700, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "24px", margin: 0 }}>
+          <h1 style={{ fontSize: "28px", fontWeight: 700, color: "var(--ink)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "24px", margin: 0 }}>
             Projects
           </h1>
 
@@ -26,13 +26,12 @@ export default function ProjectsPage() {
                   alignItems: "center",
                   gap: "16px",
                   padding: "16px 0",
-                  borderBottom: "1px solid var(--line)",
-                }}
+                  borderBottom: "1px solid var(--line)"}}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: "12px", minWidth: 0 }}>
-                  <span style={{ fontSize: "15px", color: "var(--ink)", fontWeight: 600 }}>
-                    {project.title}
-                  </span>
+                  <span style={{ fontSize: "15px", color: "var(--ink)", fontWeight: "bold" }}>
+                      {project.title}
+                    </span>
                 </div>
 
                 <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
@@ -42,7 +41,7 @@ export default function ProjectsPage() {
                       target={project.walkthrough === "#" ? undefined : "_blank"}
                       rel={project.walkthrough === "#" ? undefined : "noopener noreferrer"}
                       className="icon-link"
-                      style={{ fontSize: "13px", fontWeight: 500, textDecoration: "none" }}
+                      style={{ fontSize: "15px", fontWeight: 500, textDecoration: "none" }}
                     >
                       Walk through
                     </a>

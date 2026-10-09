@@ -59,7 +59,7 @@ export default function NewsletterPopup() {
             right: "16px",
             background: "transparent",
             border: "none",
-            color: "var(--muted)",
+            color: "var(--ink)",
             cursor: "pointer",
             padding: "4px",
             display: "flex",
@@ -71,17 +71,17 @@ export default function NewsletterPopup() {
           aria-label="Close"
           className="group hover:bg-[var(--active-bg)] hover:text-[var(--ink)]"
         >
-          <X size={20} className="text-[var(--muted)] group-hover:text-[var(--ink)] transition-colors" />
+          <X size={20} className="text-[var(--ink)] group-hover:text-[var(--ink)] transition-colors" />
         </button>
 
         <div>
           <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "12px" }}>
             <div style={{ width: "8px", height: "8px", background: "var(--ink)" }}></div>
-            <h2 style={{ fontSize: "13px", fontWeight: 700, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.05em", margin: 0 }}>
+            <h2 style={{ fontSize: "18px", fontWeight: 700, color: "var(--ink)", textTransform: "uppercase", letterSpacing: "0.05em", margin: 0 }}>
               Newsletter
             </h2>
           </div>
-          <p style={{ color: "var(--muted)", fontSize: "16px", lineHeight: 1.6, margin: 0 }}>
+          <p style={{ color: "var(--ink)", fontSize: "15px", lineHeight: 1.6, margin: 0 }}>
             Occasional letters on digital growth, applied AI, and the systems I build. No spam, unsubscribe any time.
           </p>
         </div>

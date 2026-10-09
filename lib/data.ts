@@ -30,17 +30,7 @@ export interface ProjectItem {
 }
 
 
-export const venturesData: WorkItem[] = [
-  {
-    slug: "devata-tech",
-    num: "V1",
-    title: "Devata Tech",
-    tagline: "Digital growth & content agency for SMEs",
-    desc: "A digital growth and content agency tailored for SMEs.",
-    type: "Venture",
-    role: "Co-founder & Growth Strategist",
-    date: "2024 – Present"
-  },
+export const worksData: WorkItem[] = [
   {
     slug: "ruju-factcheck",
     num: "V2",
@@ -50,6 +40,16 @@ export const venturesData: WorkItem[] = [
     type: "Venture",
     role: "Editor",
     date: "2023 – 2024"
+  },
+  {
+    slug: "devata-tech",
+    num: "V1",
+    title: "Devata Tech",
+    tagline: "Digital growth & content agency for SMEs",
+    desc: "A digital growth and content agency tailored for SMEs.",
+    type: "Venture",
+    role: "Co-founder & Growth Strategist",
+    date: "2024 – Present"
   }
 ];
 
@@ -60,7 +60,7 @@ export const projectsData: ProjectItem[] = [
     desc: "A smart waste collection system with dynamic route management, proposed at university.",
     status: "University Proposal",
     tech: ["Next.js", "Node.js", "MongoDB", "Routing Algorithm"],
-    github: "https://github.com/nabeenbudha/safairoute",
+    github: "https://github.com/bnabeen",
     walkthrough: "#",
     date: "2024"
   },
@@ -75,29 +75,4 @@ export const projectsData: ProjectItem[] = [
     date: "2024"
   }
 ];
-
-export const experimentsData: WorkItem[] = [
-  {
-    slug: "100-days-public-speaking",
-    num: "E1",
-    title: "100 Days of Public Speaking",
-    tagline: "Building confidence and communication skills in public.",
-    desc: "A daily challenge to speak publicly, test messaging, and grow a YouTube channel from scratch.",
-    type: "Experiment",
-    role: "Creator & Speaker",
-    date: "2024"
-  },
-  {
-    slug: "youtube-channels",
-    num: "E2",
-    title: "YouTube Channels & Initiatives",
-    tagline: "Testing content formats and distribution.",
-    desc: "Various channels launched to test audience retention, hook strategies, and algorithmic reach.",
-    type: "Experiment",
-    role: "Content Strategist",
-    date: "2023 – Present"
-  }
-];
-
-export const worksData = [...venturesData, ...experimentsData];
 

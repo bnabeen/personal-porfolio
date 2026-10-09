@@ -20,9 +20,9 @@ export default function GlobalError({
     <>
       <Header />
       <div className="page-container wrap" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "70vh", textAlign: "center" }}>
-        <h1 className="display-font" style={{ fontSize: "clamp(48px, 8vw, 64px)", margin: 0, color: "var(--ink)", lineHeight: 1, marginBottom: "16px" }}>Oops!</h1>
-        <h2 className="display-font" style={{ fontSize: "24px", marginBottom: "16px" }}>Something went wrong</h2>
-        <p style={{ color: "var(--muted)", marginBottom: "32px", fontSize: "16px", maxWidth: "400px" }}>
+        <h1 className="display-font" style={{ fontSize: "28px", margin: 0, color: "var(--ink)", lineHeight: 1, marginBottom: "16px" }}>Oops!</h1>
+        <h2 className="display-font" style={{ fontSize: "18px", marginBottom: "16px" }}>Something went wrong</h2>
+        <p style={{ color: "var(--ink)", marginBottom: "32px", fontSize: "15px", maxWidth: "400px" }}>
           We hit an unexpected snag while trying to load this page.
         </p>
         <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}>

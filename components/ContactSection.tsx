@@ -37,7 +37,8 @@ const contactLinks: ContactLink[] = [
 export default function ContactSection() {
   return (
     <div id="contact" style={{ padding: "20px 0", borderTop: "1px solid var(--line)" }}>
-      <h2 style={{ fontSize: "13px", fontWeight: 700, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "24px" }}>Want to get in touch?</h2>
+      <h2 style={{ fontSize: "18px", fontWeight: 700, color: "var(--ink)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "8px" }}>Get in Touch</h2>
+      <p style={{ fontSize: "15px", color: "var(--ink)", marginBottom: "24px" }}>Reply within 5 working days.</p>
 
       {/* Channels List (Minimalist text list) */}
       <div style={{ display: "flex", flexDirection: "column" }}>
@@ -64,12 +65,12 @@ export default function ContactSection() {
               }}
             >
               <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <span style={{ fontSize: "15px", color: "var(--ink)", fontWeight: 600, transition: "color 0.2s" }}>
+                <span style={{ fontSize: "15px", color: "var(--ink)", fontWeight: "bold", transition: "color 0.2s" }}>
                   {item.label}
                 </span>
-                <ArrowRight size={14} className="opacity-0 -translate-x-4 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-0" style={{ color: "var(--muted)" }} />
+                <ArrowRight size={14} className="opacity-0 -translate-x-4 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-0" style={{ color: "var(--ink)" }} />
               </div>
-              <span style={{ fontSize: "13px", color: "var(--muted)", whiteSpace: "nowrap" }}>
+              <span style={{ fontSize: "15px", color: "var(--ink)", whiteSpace: "nowrap" }}>
                 {item.value}
               </span>
             </a>

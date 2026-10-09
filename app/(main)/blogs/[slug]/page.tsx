@@ -75,7 +75,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
         {/* Clean Header & Title Block */}
         <header className="mb-10 sm:mb-12">
-          <h1 className="font-bold tracking-tight text-ink leading-[1.15] mb-4" style={{ fontSize: "24px" }}>
+          <h1 className="font-bold tracking-tight text-ink leading-[1.15] mb-4" style={{ fontSize: "28px" }}>
             {post.title}
           </h1>
           {post.date && (
@@ -133,11 +133,11 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "16px" }}>
                 <div style={{ width: "8px", height: "8px", background: "var(--ink)" }}></div>
-                <h2 style={{ fontSize: "13px", fontWeight: 700, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.05em", margin: 0 }}>
+                <h2 style={{ fontSize: "18px", fontWeight: 700, color: "var(--ink)", textTransform: "uppercase", letterSpacing: "0.05em", margin: 0 }}>
                   Newsletter
                 </h2>
               </div>
-              <p style={{ color: "var(--muted)", fontSize: "16px", lineHeight: 1.6, maxWidth: "40ch", margin: 0 }}>
+              <p style={{ color: "var(--ink)", fontSize: "15px", lineHeight: 1.6, maxWidth: "40ch", margin: 0 }}>
                 Occasional letters on digital growth, applied AI, and the systems I build. No spam, unsubscribe any time.
               </p>
             </div>

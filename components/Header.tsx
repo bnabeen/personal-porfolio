@@ -65,7 +65,7 @@ export default function Header() {
                       href={href}
                       className={`header-nav-link ${isActive ? "active" : ""}`}
                       style={{
-                        color: isActive ? "var(--ink)" : "var(--muted)",
+                        color: isActive ? "var(--ink)" : "var(--ink)",
                       }}
                     >
                       {link.label}
@@ -163,7 +163,7 @@ export default function Header() {
                   className={`header-nav-link ${isActive ? "active" : ""}`}
                   style={{
                     fontSize: "16px",
-                    color: isActive ? "var(--ink)" : "var(--muted)",
+                    color: isActive ? "var(--ink)" : "var(--ink)",
                     display: "block",
                     padding: "12px 16px",
                   }}

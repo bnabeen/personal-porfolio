@@ -15,7 +15,7 @@ export default function BlogsPage() {
     <div className="page-container">
       <div className="wrap">
         <div style={{ paddingTop: "20px", paddingBottom: "20px", borderTop: "1px solid var(--line)" }}>
-          <h1 style={{ fontSize: "13px", fontWeight: 700, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "24px", margin: 0 }}>
+          <h1 style={{ fontSize: "28px", fontWeight: 700, color: "var(--ink)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "24px", margin: 0 }}>
             Latest Writing
           </h1>
 
@@ -51,13 +51,13 @@ export default function BlogsPage() {
                   >
                     {post.title}
                   </span>
-                  <ArrowRight size={16} className="opacity-0 -translate-x-4 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-0" style={{ color: "var(--muted)" }} />
+                  <ArrowRight size={16} className="opacity-0 -translate-x-4 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-0" style={{ color: "var(--ink)" }} />
                 </div>
                 {post.date && (
                   <span
                     style={{
-                      fontSize: "14px",
-                      color: "var(--muted)",
+                      fontSize: "15px",
+                      color: "var(--ink)",
                       whiteSpace: "nowrap",
                     }}
                   >
@@ -69,7 +69,7 @@ export default function BlogsPage() {
           ))}
 
           {blogs.length === 0 && (
-            <p style={{ color: "var(--muted)", padding: "32px 0" }}>No posts found.</p>
+            <p style={{ color: "var(--ink)", padding: "32px 0" }}>No posts found.</p>
           )}
         </div>
 
@@ -85,11 +85,11 @@ export default function BlogsPage() {
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "16px" }}>
                 <div style={{ width: "8px", height: "8px", background: "var(--ink)" }}></div>
-                <h2 style={{ fontSize: "13px", fontWeight: 700, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.05em", margin: 0 }}>
+                <h2 style={{ fontSize: "18px", fontWeight: 700, color: "var(--ink)", textTransform: "uppercase", letterSpacing: "0.05em", margin: 0 }}>
                   Newsletter
                 </h2>
               </div>
-              <p style={{ color: "var(--muted)", fontSize: "16px", lineHeight: 1.6, maxWidth: "40ch", margin: 0 }}>
+              <p style={{ color: "var(--ink)", fontSize: "15px", lineHeight: 1.6, maxWidth: "40ch", margin: 0 }}>
                 Occasional letters on digital growth, applied AI, and the systems I build. No spam, unsubscribe any time.
               </p>
             </div>

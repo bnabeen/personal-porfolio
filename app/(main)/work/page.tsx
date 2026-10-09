@@ -10,7 +10,7 @@ export default function WorkPage() {
     <div className="page-container">
       <div className="wrap">
         <div style={{ paddingTop: "20px", paddingBottom: "20px", borderTop: "1px solid var(--line)" }}>
-          <h1 style={{ fontSize: "13px", fontWeight: 700, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "24px", margin: 0 }}>
+          <h1 style={{ fontSize: "28px", fontWeight: 700, color: "var(--ink)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "24px", margin: 0 }}>
             Work Experience
           </h1>
 
@@ -29,33 +29,33 @@ export default function WorkPage() {
               >
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "16px" }}>
                   <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "6px" }}>
-                    <span style={{ fontSize: "16px", color: "var(--ink)", fontWeight: 600 }}>
+                    <span style={{ fontSize: "15px", color: "var(--ink)", fontWeight: "bold" }}>
                       {exp.role || exp.title}
                     </span>
                     {exp.role && (
                       <>
-                        <span style={{ fontSize: "15px", color: "var(--muted)" }}>·</span>
-                        <span style={{ fontSize: "15px", color: "var(--muted)" }}>
+                        <span style={{ fontSize: "15px", color: "var(--ink)" }}>·</span>
+                        <span style={{ fontSize: "15px", color: "var(--ink)" }}>
                           {exp.title}
                         </span>
                       </>
                     )}
                   </div>
                   {exp.date && (
-                    <span style={{ fontSize: "14px", color: "var(--muted)", whiteSpace: "nowrap", marginTop: "2px" }}>
+                    <span style={{ fontSize: "15px", color: "var(--ink)", whiteSpace: "nowrap", marginTop: "2px" }}>
                       {exp.date}
                     </span>
                   )}
                 </div>
                 
                 {exp.tagline && (
-                  <div style={{ fontSize: "14px", color: "var(--muted)", fontWeight: 500 }}>
+                  <div style={{ fontSize: "15px", color: "var(--ink)", fontWeight: 500 }}>
                     {exp.tagline}
                   </div>
                 )}
                 
                 {exp.desc && (
-                  <div style={{ fontSize: "15px", color: "var(--muted)", lineHeight: 1.6 }}>
+                  <div style={{ fontSize: "15px", color: "var(--ink)", lineHeight: 1.6 }}>
                     {exp.desc}
                   </div>
                 )}

@@ -26,15 +26,15 @@ export default function HomeSidebar() {
 
         <dl style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-            <dt style={{ color: "var(--ink)", fontWeight: "bold", fontSize: "15px", fontWeight: "bold" }}>Now</dt>
+            <dt style={{ color: "var(--ink)", fontWeight: "bold", fontSize: "15px" }}>Now</dt>
             <dd style={{ color: "var(--ink)", fontWeight: 500, fontSize: "15px" }}>BCA student, building Devata Tech</dd>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-            <dt style={{ color: "var(--ink)", fontWeight: "bold", fontSize: "15px", fontWeight: "bold" }}>Focus</dt>
+            <dt style={{ color: "var(--ink)", fontWeight: "bold", fontSize: "15px" }}>Focus</dt>
             <dd style={{ color: "var(--ink)", fontWeight: 500, fontSize: "15px" }}>AI, content, digital growth</dd>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-            <dt style={{ color: "var(--ink)", fontWeight: "bold", fontSize: "15px", fontWeight: "bold" }}>Based in</dt>
+            <dt style={{ color: "var(--ink)", fontWeight: "bold", fontSize: "15px" }}>Based in</dt>
             <dd style={{ color: "var(--ink)", fontWeight: 500, fontSize: "15px" }}>Kathmandu, Nepal</dd>
           </div>
         </dl>

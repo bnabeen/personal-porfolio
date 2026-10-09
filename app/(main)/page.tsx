@@ -53,15 +53,15 @@ export default function Home() {
             <div className="home-profile-info">
               <dl style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
                 <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                  <dt style={{ color: "var(--ink)", fontWeight: "bold", fontSize: "15px", fontWeight: "bold" }}>Now</dt>
+                  <dt style={{ color: "var(--ink)", fontWeight: "bold", fontSize: "15px" }}>Now</dt>
                   <dd style={{ color: "var(--ink)", fontWeight: 500, fontSize: "15px" }}>BCA student, building Devata Tech</dd>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                  <dt style={{ color: "var(--ink)", fontWeight: "bold", fontSize: "15px", fontWeight: "bold" }}>Focus</dt>
+                  <dt style={{ color: "var(--ink)", fontWeight: "bold", fontSize: "15px" }}>Focus</dt>
                   <dd style={{ color: "var(--ink)", fontWeight: 500, fontSize: "15px" }}>AI, content, digital growth</dd>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                  <dt style={{ color: "var(--ink)", fontWeight: "bold", fontSize: "15px", fontWeight: "bold" }}>Based in</dt>
+                  <dt style={{ color: "var(--ink)", fontWeight: "bold", fontSize: "15px" }}>Based in</dt>
                   <dd style={{ color: "var(--ink)", fontWeight: 500, fontSize: "15px" }}>Kathmandu, Nepal</dd>
                 </div>
               </dl>
@@ -244,10 +244,9 @@ export default function Home() {
               <p style={{ fontSize: "15px", color: "var(--ink)", lineHeight: 1.7, marginBottom: "20px" }}>
                 Now, I’m learning technology, with a real interest in applied AI and digital growth. This is also the time where I started taking public speaking seriously. I did a <a href="https://www.instagram.com/bnabeen.me" target="_blank" style={{ color: "var(--ink)", textDecoration: "none", fontWeight: "bold" }}>100-day challenge</a>, making reels in public where I handed my phone to strangers and spoke on a quote.              </p>
               <p style={{ fontSize: "15px", color: "var(--ink)", lineHeight: 1.7, marginBottom: "20px" }}>
-                Now I’m going deeper into AI, especially how it can help businesses grow, and into content.
-              </p>
+                Now I’m going deeper into AI, especially how it can help businesses grow, and creating content about it.              </p>
               <p style={{ fontSize: "15px", color: "var(--ink)", lineHeight: 1.7, margin: 0 }}>
-                Outside work & study, I’m building a <a href="https://www.goodreads.com/bnabeen" target="_blank" style={{ color: "var(--ink)", textDecoration: "none", fontWeight: "bold" }}>habit of reading books</a>        </p>
+                Outside work & study, I’m building a <a href="https://www.goodreads.com/bnabeen" target="_blank" style={{ color: "var(--ink)", textDecoration: "none", fontWeight: "bold" }}>habit of reading</a>, writing poetry, and listening to music.              </p>
             </div>
           </div>
 
@@ -271,6 +270,19 @@ export default function Home() {
                 <li style={{ marginBottom: "8px" }}><strong>Build.</strong> We make the website, content, or system.</li>
                 <li style={{ marginBottom: "8px" }}><strong>Publish and adjust.</strong> We launch, see what people respond to, and improve it.</li>
               </ul>
+            </div>
+          </div>
+
+          {/* Content Section */}
+          <div style={{ paddingTop: "20px", paddingBottom: "20px", borderTop: "1px solid var(--line)" }}>
+            <h2 style={{ fontSize: "18px", fontWeight: 700, color: "var(--ink)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "24px", margin: 0 }}>Content</h2>
+            <div style={{ marginTop: "16px" }}>
+              <p style={{ fontSize: "15px", color: "var(--ink)", lineHeight: 1.7, marginBottom: "20px" }}>
+                I’m just getting started, and I’m sharing it as I go.
+              </p>
+              <p style={{ fontSize: "15px", color: "var(--ink)", lineHeight: 1.7, margin: 0 }}>
+                I’m creating content about AI, digital growth, and self growth. It’s early, and I’d rather show up and improve than wait until it’s perfect.
+              </p>
             </div>
           </div>
 

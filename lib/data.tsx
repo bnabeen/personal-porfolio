@@ -46,7 +46,7 @@ export const worksData: WorkItem[] = [
     num: "V1",
     title: "RUJU FactCheck",
     tagline: "",
-    desc: "Edited and published fact-checks for an AI-assisted fact-checking platform. Over two years I:\n- Published 200+ fact-checks\n- Helped grow its social media following by 10,000+\n- Was selected for the Youth Innovation Lab AI Innovators program",
+    desc: "Fact Checked and Published 200+ Factcheck Content on website & social media.",
     type: "Venture",
     role: "Editor",
     date: "2024 - 2026"

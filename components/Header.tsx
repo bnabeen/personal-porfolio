@@ -20,7 +20,7 @@ export default function Header() {
     setMounted(true);
   }, []);
 
-  const toggleTheme = (newTheme?: string) => {
+  const toggleTheme = (newTheme?: string | React.MouseEvent) => {
     const target = (typeof newTheme === "string" && (newTheme === "dark" || newTheme === "light"))
       ? newTheme
       : (resolvedTheme === "dark" ? "light" : "dark");
@@ -102,7 +102,7 @@ export default function Header() {
               ) : (
                 <button
                   type="button"
-                  onClick={toggleTheme}
+                  onClick={() => toggleTheme()}
                   aria-label="Toggle color theme"
                   style={{
                     background: "transparent",
@@ -131,7 +131,7 @@ export default function Header() {
             ) : (
               <button
                 type="button"
-                onClick={toggleTheme}
+                onClick={() => toggleTheme()}
                 aria-label="Toggle color theme"
                 style={{
                   background: "transparent",

@@ -8,36 +8,61 @@ export default function NewsletterPopup() {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    // Check if the user has already seen or closed the popup
-    const hasSeen = localStorage.getItem("hasSeenNewsletterPopup");
-    if (!hasSeen) {
-      // Small delay to let the page load first
-      const timer = setTimeout(() => {
-        setIsOpen(true);
-      }, 3000); // 3 seconds delay
-      return () => clearTimeout(timer);
-    }
+    // Show popup whenever the site is opened
+    const timer = setTimeout(() => {
+      setIsOpen(true);
+    }, 800); // short delay to let initial layout settle smoothly
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, []);
+
+  // Lock background scrolling while popup is open
+  useEffect(() => {
+    if (isOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [isOpen]);
 
   const handleClose = () => {
     setIsOpen(false);
-    localStorage.setItem("hasSeenNewsletterPopup", "true");
   };
 
   if (!isOpen) return null;
 
   return (
-    <div style={{
-      position: "fixed",
-      inset: 0,
-      zIndex: 9999,
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      backgroundColor: "rgba(0, 0, 0, 0.4)",
-      backdropFilter: "blur(4px)",
-      padding: "20px"
-    }}>
+    <div
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          handleClose();
+        }
+      }}
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 9999,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "rgba(0, 0, 0, 0.4)",
+        backdropFilter: "blur(4px)",
+        padding: "20px",
+        overflowY: "auto",
+        overscrollBehavior: "contain",
+      }}>
       <div style={{
         position: "relative",
         width: "100%",
@@ -75,14 +100,17 @@ export default function NewsletterPopup() {
         </button>
 
         <div>
-          <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "12px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "16px" }}>
             <div style={{ width: "8px", height: "8px", background: "var(--ink)" }}></div>
             <h2 style={{ fontSize: "18px", fontWeight: 700, color: "var(--ink)", textTransform: "uppercase", letterSpacing: "0.05em", margin: 0 }}>
               Newsletter
             </h2>
           </div>
+          <p style={{ color: "var(--ink)", fontSize: "15px", fontWeight: "bold", marginBottom: "8px" }}>
+            A short letter on AI, content, and growth
+          </p>
           <p style={{ color: "var(--ink)", fontSize: "15px", lineHeight: 1.6, margin: 0 }}>
-            Occasional letters on digital growth, applied AI, and the systems I build. No spam, unsubscribe any time.
+            What I’m learning and building, in plain language. Weekly. No spam, unsubscribe any time.
           </p>
         </div>
 

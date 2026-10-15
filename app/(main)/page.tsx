@@ -1,6 +1,6 @@
 import Link from "next/link";
 import HomeSidebar from "@/components/HomeSidebar";
-import SubstackEmbed from "@/components/SubstackEmbed";
+import NewsletterSection from "@/components/NewsletterSection";
 import ContactSection from "@/components/ContactSection";
 import { getAllBlogs } from "@/lib/blogs";
 import { ArrowRight, Github, ExternalLink } from "lucide-react";
@@ -273,43 +273,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Content Section */}
-          <div style={{ paddingTop: "20px", paddingBottom: "20px", borderTop: "1px solid var(--line)" }}>
-            <h2 style={{ fontSize: "18px", fontWeight: 700, color: "var(--ink)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "24px", margin: 0 }}>Content</h2>
-            <div style={{ marginTop: "16px" }}>
-              <p style={{ fontSize: "15px", color: "var(--ink)", lineHeight: 1.7, marginBottom: "20px" }}>
-                I’m just getting started, and I’m sharing it as I go.
-              </p>
-              <p style={{ fontSize: "15px", color: "var(--ink)", lineHeight: 1.7, margin: 0 }}>
-                I’m creating content about AI, digital growth, and self growth. It’s early, and I’d rather show up and improve than wait until it’s perfect.
-              </p>
-            </div>
-          </div>
-
           {/* Newsletter Section */}
-          <div style={{ padding: "20px 0", borderTop: "1px solid var(--line)" }}>
-            <div className="box-padding newsletter-grid" style={{
-              border: "1px solid var(--line)",
-              borderRadius: "12px",
-              background: "transparent"
-            }}>
-              <div>
-                <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "16px" }}>
-                  <div style={{ width: "8px", height: "8px", background: "var(--ink)" }}></div>
-                  <h2 style={{ fontSize: "18px", fontWeight: 700, color: "var(--ink)", textTransform: "uppercase", letterSpacing: "0.05em", margin: 0 }}>
-                    Newsletter
-                  </h2>
-                </div>
-                <p style={{ color: "var(--ink)", fontSize: "15px", fontWeight: "bold", marginBottom: "8px" }}>
-                  A short letter on AI, content, and growth
-                </p>
-                <p style={{ color: "var(--ink)", fontSize: "15px", lineHeight: 1.6, maxWidth: "40ch", margin: 0 }}>
-                  What I’m learning and building, in plain language. Weekly. No spam.
-                </p>
-              </div>
-              <SubstackEmbed />
-            </div>
-          </div>
+          <NewsletterSection />
         </div>
 
         {/* Right Sidebar Column */}

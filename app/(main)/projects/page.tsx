@@ -1,5 +1,6 @@
 import { projectsData } from "@/lib/data";
 import { ArrowRight, Github, ExternalLink } from "lucide-react";
+import BackButton from "@/components/BackButton";
 
 export const metadata = {
   title: "Projects | Nabeen Budha",
@@ -10,6 +11,7 @@ export default function ProjectsPage() {
   return (
     <div className="page-container">
       <div className="wrap">
+        <BackButton />
         <div style={{ paddingTop: "20px", paddingBottom: "20px", borderTop: "1px solid var(--line)" }}>
           <h1 style={{ fontSize: "28px", fontWeight: 700, color: "var(--ink)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "24px", margin: 0 }}>
             Projects

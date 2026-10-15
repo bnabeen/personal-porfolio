@@ -9,8 +9,8 @@ interface ContactLink {
 const contactLinks: ContactLink[] = [
   {
     label: "Email",
-    value: "info.nabeenbudha@gmail.com",
-    href: "mailto:info.nabeenbudha@gmail.com",
+    value: "bnabeen.me@gmail.com",
+    href: "mailto:bnabeen.me@gmail.com",
   },
   {
     label: "LinkedIn",

@@ -1,4 +1,5 @@
 import { worksData } from "@/lib/data";
+import BackButton from "@/components/BackButton";
 
 export const metadata = {
   title: "Work Experience | Nabeen Budha",
@@ -9,6 +10,7 @@ export default function WorkPage() {
   return (
     <div className="page-container">
       <div className="wrap">
+        <BackButton />
         <div style={{ paddingTop: "20px", paddingBottom: "20px", borderTop: "1px solid var(--line)" }}>
           <h1 style={{ fontSize: "28px", fontWeight: 700, color: "var(--ink)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "24px", margin: 0 }}>
             Work Experience

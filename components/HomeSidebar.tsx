@@ -6,7 +6,7 @@ export default function HomeSidebar() {
   const topBlogs = getAllBlogs().slice(0, 5);
 
   return (
-    <aside className="home-sidebar" style={{ display: "flex", flexDirection: "column", gap: "32px", width: "100%" }}>
+    <aside className="home-sidebar desktop-only" style={{ display: "flex", flexDirection: "column", gap: "32px", width: "100%" }}>
       <div className="desktop-only" style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
         <div style={{
           aspectRatio: "1/1",

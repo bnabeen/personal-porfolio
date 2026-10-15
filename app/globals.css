@@ -28,7 +28,11 @@
   --active-bg: rgba(0, 0, 0, 0.05);
 }
 
-[data-theme="dark"] {
+:root[data-theme="dark"],
+html[data-theme="dark"],
+html.dark,
+[data-theme="dark"],
+.dark {
   color-scheme: dark;
   --bg: #1b1b1b;
   --ink: #f2efe9;
@@ -105,7 +109,6 @@ body {
   animation: skeleton-pulse 1.6s ease-in-out infinite;
 }
 
-[data-theme="dark"] .skeleton,
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .skeleton {
     --skeleton-bg: #2a2a2a;
@@ -164,6 +167,21 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ── View Transitions API: Circular Reveal Theme Animation ── */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
 }
 
 h1,
@@ -676,12 +694,11 @@ section p.sub {
 
   .sidebar-layout {
     grid-template-columns: 1fr;
-    gap: 64px;
+    gap: 0;
   }
 
-  /* Stacked layout: sidebar should scroll normally */
   .home-sidebar {
-    position: static;
+    display: none !important;
   }
 
   .hero-title {
@@ -1095,10 +1112,10 @@ section p.sub {
 }
 
 .main-content-gap {
-  margin-bottom: 48px;
+  margin-bottom: 0;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 901px) {
   .main-content-gap {
     margin-bottom: 48px;
   }

@@ -3,6 +3,10 @@ import "./globals.css";
 import "@uploadthing/react/styles.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://nabinbudha.com.np"),
+  alternates: {
+    canonical: "./",
+  },
   title: "Nabeen Budha | AI, Content & Digital Growth",
   description: "Nabeen Budha is a BCA student in Kathmandu helping local businesses grow with AI and content. Ex-editor at RUJU FactCheck, now building Devata Tech.",
   keywords: ["Nabeen Budha", "AI Marketing", "Content Systems", "Devata Tech", "Customer Acquisition", "Nepal Tech"],

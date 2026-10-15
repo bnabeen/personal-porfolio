@@ -1,11 +1,12 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import BackButton from "@/components/BackButton";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import { getAllBlogs, getBlogBySlug } from "@/lib/blogs";
-import SubstackEmbed from "@/components/SubstackEmbed";
+import NewsletterSection from "@/components/NewsletterSection";
 
 export async function generateStaticParams() {
   const blogs = getAllBlogs();
@@ -66,12 +67,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     <div className="w-full bg-bg text-ink min-h-screen py-10 sm:py-16">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Navigation Back Link */}
-        <Link
-          href="/blogs"
-          className="inline-flex items-center gap-2 text-sm text-muted hover:text-ink transition-colors mb-8 no-underline"
-        >
-          <ArrowLeft size={16} /> Back to Blogs
-        </Link>
+        <BackButton href="/blogs" label="Back to Blogs" style={{ marginBottom: "32px" }} />
 
         {/* Clean Header & Title Block */}
         <header className="mb-10 sm:mb-12">
@@ -124,26 +120,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         </article>
 
         {/* Newsletter Section */}
-        <div style={{ marginTop: "48px", padding: "20px 0", borderTop: "1px solid var(--line)" }}>
-          <div className="box-padding newsletter-grid" style={{
-            border: "1px solid var(--line)",
-            borderRadius: "12px",
-            background: "transparent"
-          }}>
-            <div>
-              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "16px" }}>
-                <div style={{ width: "8px", height: "8px", background: "var(--ink)" }}></div>
-                <h2 style={{ fontSize: "18px", fontWeight: 700, color: "var(--ink)", textTransform: "uppercase", letterSpacing: "0.05em", margin: 0 }}>
-                  Newsletter
-                </h2>
-              </div>
-              <p style={{ color: "var(--ink)", fontSize: "15px", lineHeight: 1.6, maxWidth: "40ch", margin: 0 }}>
-                Occasional letters on digital growth, applied AI, and the systems I build. No spam, unsubscribe any time.
-              </p>
-            </div>
-            <SubstackEmbed />
-          </div>
-        </div>
+        <NewsletterSection style={{ marginTop: "48px" }} />
 
         {/* Clean Footer Navigation */}
         <footer className="pt-8 flex justify-between items-center text-sm">

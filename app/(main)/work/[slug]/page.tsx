@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { worksData } from "@/lib/data";
 import { ArrowLeft, CheckCircle2, AlertTriangle, Sparkles, ArrowRight } from "lucide-react";
+import BackButton from "@/components/BackButton";
 
 export async function generateStaticParams() {
   return worksData.map((w) => ({ slug: w.slug }));
@@ -26,9 +27,7 @@ export default function WorkDetailPage({ params }: { params: { slug: string } })
   return (
     <div style={{ paddingTop: "40px", paddingBottom: "96px" }}>
       <div className="wrap" style={{ maxWidth: "900px" }}>
-        <Link href="/work" style={{ display: "inline-flex", alignItems: "center", gap: "8px", color: "var(--blue)", fontWeight: "bold", fontSize: "15px", marginBottom: "32px" }}>
-          <ArrowLeft size={18} /> Back to Work
-        </Link>
+        <BackButton href="/work" label="Back to Work" style={{ marginBottom: "32px" }} />
 
         <div style={{ marginBottom: "32px" }}>
           <span className="badge" style={{ marginBottom: "16px" }}>{item.type} #{item.num}</span>

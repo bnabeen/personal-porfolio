@@ -20,6 +20,23 @@ export default function Header() {
     setMounted(true);
   }, []);
 
+  const toggleTheme = (newTheme?: string) => {
+    const target = (typeof newTheme === "string" && (newTheme === "dark" || newTheme === "light"))
+      ? newTheme
+      : (resolvedTheme === "dark" ? "light" : "dark");
+    setTheme(target);
+    if (typeof document !== "undefined") {
+      document.documentElement.setAttribute("data-theme", target);
+      if (target === "dark") {
+        document.documentElement.classList.add("dark");
+        document.documentElement.classList.remove("light");
+      } else {
+        document.documentElement.classList.add("light");
+        document.documentElement.classList.remove("dark");
+      }
+    }
+  };
+
   const navLinks = [
     { label: "Work", href: "/#work" },
     { label: "Projects", href: "/#projects" },
@@ -77,22 +94,58 @@ export default function Header() {
 
             {/* Theme Toggle */}
             <div style={{ display: "flex", alignItems: "center", borderLeft: "1px solid var(--line)", paddingLeft: "24px" }}>
-              {mounted && (
+              {mounted ? (
                 <AnimatedThemeToggler
                   theme={resolvedTheme}
-                  onThemeChange={setTheme}
+                  onThemeChange={toggleTheme}
                 />
+              ) : (
+                <button
+                  type="button"
+                  onClick={toggleTheme}
+                  aria-label="Toggle color theme"
+                  style={{
+                    background: "transparent",
+                    border: "none",
+                    color: "var(--ink)",
+                    display: "grid",
+                    placeItems: "center",
+                    width: "42px",
+                    height: "42px",
+                    cursor: "pointer",
+                  }}
+                >
+                  <Sun size={18} />
+                </button>
               )}
             </div>
           </div>
 
           {/* Mobile Menu Toggle & Theme */}
           <div className="mobile-only" style={{ alignItems: "center", gap: "16px" }}>
-            {mounted && (
+            {mounted ? (
               <AnimatedThemeToggler
                 theme={resolvedTheme}
-                onThemeChange={setTheme}
+                onThemeChange={toggleTheme}
               />
+            ) : (
+              <button
+                type="button"
+                onClick={toggleTheme}
+                aria-label="Toggle color theme"
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  color: "var(--ink)",
+                  display: "grid",
+                  placeItems: "center",
+                  width: "42px",
+                  height: "42px",
+                  cursor: "pointer",
+                }}
+              >
+                <Sun size={18} />
+              </button>
             )}
             <motion.button
               whileHover={{ scale: 1.05 }}

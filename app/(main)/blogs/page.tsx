@@ -21,59 +21,59 @@ export default function BlogsPage() {
             Latest Writing
           </h1>
 
-        {/* Blog Post List (Minimalist text list) */}
-        <div style={{ display: "flex", flexDirection: "column", marginBottom: "64px" }}>
-          {blogs.map((post) => (
-            <div
-              key={post.slug}
-              className="group"
-              style={{
-                padding: "16px 0",
-                borderBottom: "1px solid var(--line)",
-              }}
-            >
-              <Link
-                href={`/blogs/${post.slug}`}
+          {/* Blog Post List (Minimalist text list) */}
+          <div style={{ display: "flex", flexDirection: "column", marginBottom: "64px" }}>
+            {blogs.map((post) => (
+              <div
+                key={post.slug}
+                className="group"
                 style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  gap: "16px",
-                  textDecoration: "none",
-                  width: "100%",
+                  padding: "16px 0",
+                  borderBottom: "1px solid var(--line)",
                 }}
               >
-                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                  <span
-                    style={{
-                      fontSize: "16px",
-                      color: "var(--ink)",
-                      fontWeight: 500,
-                    }}
-                  >
-                    {post.title}
-                  </span>
-                  <ArrowRight size={16} className="opacity-0 -translate-x-4 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-0" style={{ color: "var(--ink)" }} />
-                </div>
-                {post.date && (
-                  <span
-                    style={{
-                      fontSize: "15px",
-                      color: "var(--ink)",
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    {post.date}
-                  </span>
-                )}
-              </Link>
-            </div>
-          ))}
+                <Link
+                  href={`/blogs/${post.slug}`}
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    gap: "16px",
+                    textDecoration: "none",
+                    width: "100%",
+                  }}
+                >
+                  <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                    <span
+                      style={{
+                        fontSize: "16px",
+                        color: "var(--ink)",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {post.title}
+                    </span>
+                    <ArrowRight size={16} className="opacity-0 -translate-x-4 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-0" style={{ color: "var(--ink)" }} />
+                  </div>
+                  {post.date && (
+                    <span
+                      style={{
+                        fontSize: "15px",
+                        color: "var(--ink)",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {post.date}
+                    </span>
+                  )}
+                </Link>
+              </div>
+            ))}
 
-          {blogs.length === 0 && (
-            <p style={{ color: "var(--ink)", padding: "32px 0" }}>No posts found.</p>
-          )}
-        </div>
+            {blogs.length === 0 && (
+              <p style={{ color: "var(--ink)", padding: "32px 0" }}>No posts found.</p>
+            )}
+          </div>
 
         </div>
 

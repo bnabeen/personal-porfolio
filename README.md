@@ -1,6 +1,6 @@
-# Nabeen Budha — Personal Website
+# Nabeen Budha - Personal Website
 
-Minimal, single-column personal website built with Next.js 14, React 18, and CSS design tokens. Follows system dark/light mode with zero client JavaScript.
+Minimal, single-column personal website built with Next.js 14, React 18, and CSS design tokens.
 
 ## How to run
 

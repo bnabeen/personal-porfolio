@@ -7,7 +7,6 @@ category: Communication
 topic: Public Speaking
 author: Nabeen Budha
 ---
-<!-- ![My Sketch](images/profile.jpg) -> use this for adding poster or images.-->
 I finished my 100 days of public speaking challenge two months ago. It took me this long to sit down and write about it.
 
 It was a normal day. I was walking home from Koteshwar to Pepsicola after work. I normally talk to myself when I am alone, and that day I was talking about how to improve my speaking. Suddenly, I realized I could improve faster if I spoke in front of strangers.

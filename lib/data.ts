@@ -1,78 +1,79 @@
-interface WorkItem {
-  slug: string;
-  num: string;
+export interface WorkItem {
   title: string;
-  tagline: string;
-  desc: string;
-  type: "Venture" | "Project" | "Experiment";
+  period: string;
+  description: string;
   role?: string;
-  date?: string;
-  flow?: string[];
-  metrics?: { label: string; value: string; sub?: string }[];
-  question?: string;
-  problem?: string;
-  hypothesis?: string;
-  approach?: { step: string | number; title: string; desc: string }[];
-  whatDidntWork?: string[];
-  takeaway?: string;
+  link?: string | null;
 }
 
 export interface ProjectItem {
-  slug: string;
   title: string;
-  desc: string;
-  status: string;
-  tech: string[];
-  date?: string;
-  github?: string;
-  demo?: string;
-  walkthrough?: string;
+  period: string;
+  description: string;
+  link: string;
+  linkLabel: string;
 }
 
+export interface ElsewhereLink {
+  label: string;
+  href: string;
+}
 
-export const worksData: WorkItem[] = [
-  {
-    slug: "ruju-factcheck",
-    num: "V2",
-    title: "RUJU Fact Check",
-    tagline: "Editor",
-    desc: "Worked as an Editor. Tried to implement an AI assisted factchecking system. (Closed)",
-    type: "Venture",
-    role: "Editor",
-    date: "2023 – 2024"
-  },
-  {
-    slug: "devata-tech",
-    num: "V1",
-    title: "Devata Tech",
-    tagline: "Digital growth & content agency for SMEs",
-    desc: "A digital growth and content agency tailored for SMEs.",
-    type: "Venture",
-    role: "Co-founder & Growth Strategist",
-    date: "2024 – Present"
-  }
+export const siteConfig = {
+  name: "Nabeen Budha",
+  descriptor: "Student. Building @Devata",
+  title: "Nabeen Budha",
+  description:
+    "Nabeen Budha, a BCA student in Kathmandu currently Building Devata, a creative & content agency for local businesses",
+  footer: "© 2026 Nabeen Budha",
+  email: "bnabeen.me@gmail.com",
+};
+
+export const introParagraphs: string[] = [
+  "I’m a BCA student in Kathmandu, in my sixth semester. For almost two years I did fact-checking and verification at RUJU FactCheck. Now I’m starting Devata, a Small studio for local businesses, and I make content on personal growth and technology.",
+  "The rest of my time goes to books and writing.",
 ];
 
-export const projectsData: ProjectItem[] = [
+export const workItems: WorkItem[] = [
   {
-    slug: "safairoute",
-    title: "SafaiRoute",
-    desc: "A smart waste collection system with dynamic route management, proposed at university.",
-    status: "University Proposal",
-    tech: ["Next.js", "Node.js", "MongoDB", "Routing Algorithm"],
-    github: "https://github.com/bnabeen",
-    walkthrough: "#",
-    date: "2024"
+    title: "Devata",
+    period: "2026 to now",
+    description: "Websites, content and branding for local businesses. Just starting.",
+    link: null,
   },
   {
-    slug: "ai-content-generator-pipeline",
-    title: "AI Content Generator Pipeline",
-    desc: "Automated multi-format script and post generation from qualitative research notes.",
-    status: "In Development",
-    tech: ["Python", "FastAPI", "OpenAI API", "PostgreSQL"],
-    github: "https://github.com/nabeenbudha/ai-content-pipeline",
-    walkthrough: "#",
-    date: "2024"
-  }
+    title: "RUJU FactCheck",
+    period: "2024 to 2026",
+    role: "Editorial Lead",
+    description:
+      "Two years of checking claims that spread on social media, with 200+ fact-checks published.",
+    link: "https://theruju.com/",
+  },
 ];
 
+export const projectItems: ProjectItem[] = [
+  {
+    title: "RUJU – Fact Checking System",
+    period: "2025",
+    description:
+      "A web-based fact-checking system designed to support the process of reviewing information, investigating claims, and combating misinformation.",
+    link: "https://github.com/bnabeen/ruju-factcheck",
+    linkLabel: "GitHub",
+  },
+  {
+    title: "Billing Management System",
+    period: "2025",
+    description:
+      "A simple Billing Management System designed for small retail stores (Kirana stores).",
+    link: "https://github.com/bnabeen/billing-management-system",
+    linkLabel: "GitHub",
+  },
+];
+
+export const elsewhereLinks: ElsewhereLink[] = [
+  { label: "GitHub", href: "https://github.com/bnabeen" },
+  { label: "LinkedIn", href: "https://linkedin.com/in/bnabeen" },
+  { label: "Instagram", href: "https://instagram.com/bnabeen.me" },
+  { label: "Goodreads", href: "https://goodreads.com/bnabeen" },
+  { label: "Substack", href: "https://bnabeen.substack.com" },
+];

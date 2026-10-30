@@ -1,40 +1,49 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { Source_Serif_4, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import "@uploadthing/react/styles.css";
+import { siteConfig } from "@/lib/data";
+
+const sourceSerif = Source_Serif_4({
+  subsets: ["latin"],
+  display: "swap",
+  style: ["normal", "italic"],
+  variable: "--font-serif-source",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-jetbrains-mono",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://nabinbudha.com.np"),
   alternates: {
     canonical: "./",
   },
-  title: "Nabeen Budha | AI, Content & Digital Growth",
-  description: "Nabeen Budha is a BCA student in Kathmandu helping local businesses grow with AI and content. Ex-editor at RUJU FactCheck, now building Devata Tech.",
-  keywords: ["Nabeen Budha", "AI Marketing", "Content Systems", "Devata Tech", "Customer Acquisition", "Nepal Tech"],
-  authors: [{ name: "Nabeen Budha" }],
+  title: {
+    default: siteConfig.name,
+    template: `%s · ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  authors: [{ name: siteConfig.name }],
   openGraph: {
-    title: "Nabeen Budha | AI, Content & Digital Growth",
-    description: "Nabeen Budha is a BCA student in Kathmandu helping local businesses grow with AI and content. Ex-editor at RUJU FactCheck, now building Devata Tech.",
-    type: "website",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    url: "https://nabinbudha.com.np",
+    siteName: siteConfig.name,
     locale: "en_US",
-    siteName: "Nabeen Budha Portfolio",
+    type: "website",
   },
   icons: {
     icon: "/icon.svg",
-  }
+  },
 };
 
-export const viewport = {
+export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
 };
-
-import { Suspense } from "react";
-import ClickEffect from "@/components/ClickEffect";
-import NavigationProgress from "@/components/NavigationProgress";
-import { Toaster } from "react-hot-toast";
-import { ThemeProvider } from "@/components/ThemeProvider";
-import NewsletterPopup from "@/components/NewsletterPopup";
 
 export default function RootLayout({
   children,
@@ -42,17 +51,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${sourceSerif.variable} ${jetbrainsMono.variable}`}
+    >
       <body>
-        <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem>
-          <Toaster position="bottom-right" toastOptions={{ style: { background: 'var(--bg)', color: 'var(--ink)', border: '1px solid var(--line)' } }} />
-          <Suspense fallback={null}>
-            <NavigationProgress />
-          </Suspense>
-          <ClickEffect />
-          <NewsletterPopup />
-          {children}
-        </ThemeProvider>
+        <div className="site-container">{children}</div>
       </body>
     </html>
   );

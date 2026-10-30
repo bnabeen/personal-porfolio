@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Source_Serif_4, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { siteConfig } from "@/lib/data";
+import { siteConfig, elsewhereLinks } from "@/lib/data";
 
 const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
@@ -26,6 +26,16 @@ export const metadata: Metadata = {
     template: `%s · ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  keywords: [
+    "Nabeen Budha",
+    "Nabin Budha",
+    "bnabeen",
+    "Devata",
+    "RUJU FactCheck",
+    "Kathmandu",
+    "Nepal Tech",
+    "Fact Checking Nepal",
+  ],
   authors: [{ name: siteConfig.name }],
   openGraph: {
     title: siteConfig.name,
@@ -53,6 +63,43 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://nabinbudha.com.np/#person",
+      name: siteConfig.name,
+      alternateName: ["Nabin Budha", "bnabeen"],
+      url: "https://nabinbudha.com.np",
+      image: "https://nabinbudha.com.np/icon.png",
+      jobTitle: "Student & Founder",
+      worksFor: {
+        "@type": "Organization",
+        name: "Devata",
+      },
+      alumniOf: {
+        "@type": "Organization",
+        name: "RUJU FactCheck",
+      },
+      sameAs: elsewhereLinks.map((item) => item.href),
+      description: siteConfig.description,
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://nabinbudha.com.np/#website",
+      url: "https://nabinbudha.com.np",
+      name: siteConfig.name,
+      alternateName: "Nabin Budha Portfolio",
+      description: siteConfig.description,
+      publisher: {
+        "@id": "https://nabinbudha.com.np/#person",
+      },
+      inLanguage: "en-US",
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -63,6 +110,12 @@ export default function RootLayout({
       lang="en"
       className={`${sourceSerif.variable} ${jetbrainsMono.variable}`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body>
         <div className="site-container">{children}</div>
       </body>
